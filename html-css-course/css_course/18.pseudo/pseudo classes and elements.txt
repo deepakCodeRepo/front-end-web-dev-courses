@@ -1,0 +1,3 @@
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+https://youtu.be/OXGznpKZ_sA?si=48xdQa1W4kk74DXp&t=23596

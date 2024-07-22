@@ -1,0 +1,51 @@
+body {
+  font-size: 2rem;
+  font-family: "Courier New", Courier, monospace;
+}
+ul {
+  text-align: right;
+  background-color: black;
+  padding: 0.3em;
+  /* display: none; */
+}
+/* display: none; hides the unordered list*/
+/* https://www.freecodecamp.org/news/css-display-none-and-visibility-hidden-the-difference/*/
+li {
+  display: inline-block;
+  list-style-type: none;
+  margin-inline: 0.5em;
+  padding-right: 0.5em;
+}
+/* display: inline-block; can be used when you are using links as buttons or 
+when you want to display lists in 1 row. */
+li a {
+  text-decoration: none;
+  text-align: right;
+  color: antiquewhite;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+main {
+  background-color: aqua;
+  /* width: 50%; */
+}
+p {
+  background-color: lightgray;
+  color: black;
+  /* margin: 100px 50px; */
+}
+.opposite {
+  display: inline-block;
+  background-color: #333;
+  color: antiquewhite;
+  margin-top: 3em;
+  padding-top: 2em;
+  height: 200px;
+}
+/* we cant apply margin-top, margin-bottom and height to an inline element.*/
+/* when we apply padding-top, padding-bottom to an inline element, 
+it covers the other paragraphs. */
+/* display: inline-block; will allow the above properties to be applied without 
+creating a new line. */

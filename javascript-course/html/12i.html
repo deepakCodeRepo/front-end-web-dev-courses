@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      class="js-add"
+      onclick="
+      newMsg('add');
+    "
+    >
+      Add
+    </button>
+    <button
+      class="js-remove"
+      onclick="
+      newMsg('remove');
+    "
+    >
+      Remove
+    </button>
+
+    <script>
+      let messages = 0;
+      function newMsg(addRem) {
+        if (addRem === "add") {
+          messages++;
+        } else if (addRem === "remove" && messages > 0) {
+          messages--;
+        }
+        if (messages === 0) {
+          document.title = "App";
+        } else {
+          document.title = `(${messages}) New messages`;
+        }
+      }
+
+      /* setInterval(function () {
+          document.title = `(${messages}) New messages`;
+        }, 2000); */
+    </script>
+  </body>
+</html>

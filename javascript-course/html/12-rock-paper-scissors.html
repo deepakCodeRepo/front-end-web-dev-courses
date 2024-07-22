@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM-rock paper scissors</title>
+    <style>
+      body {
+        background-color: black;
+        margin: 1rem;
+      }
+      .game-title {
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .hand {
+        font-size: 6rem;
+        background-color: transparent;
+        padding: 2rem;
+        margin: 1rem;
+        border-radius: 50%;
+        border-color: white;
+        border-width: 3px;
+        cursor: pointer;
+      }
+      p {
+        color: white;
+        font-size: 1.5rem;
+      }
+      .reset-btn {
+        font-size: large;
+        background-color: white;
+        color: black;
+        padding: 5px;
+        cursor: pointer;
+      }
+      .autoplay-btn {
+        font-size: large;
+        background-color: white;
+        color: black;
+        padding: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="game-title">Rock Paper Scissors</p>
+    <button class="hand js-rock">&#9994;</button>
+    <button class="hand js-paper">✋</button>
+    <button class="hand js-scissors">&#9996;</button>
+
+    <p class="js-moves"></p>
+    <p class="js-results"></p>
+
+    <p class="js-scorecard">Wins: 0, Losses: 0, Ties: 0</p>
+
+    <button class="reset-btn js-reset">Reset score</button>
+
+    <button class="autoplay-btn js-autoplay">Auto Play</button>
+
+    <script>
+      let score = JSON.parse(localStorage.getItem("score"));
+
+      if (score === null) {
+        score = {
+          wins: 0,
+          losses: 0,
+          ties: 0,
+        };
+      }
+
+      //NOTE: using addEventListener instead of onClick attribute
+      document.querySelector(".js-rock").addEventListener("click", () => {
+        playGame("rock");
+      });
+      document.querySelector(".js-paper").addEventListener("click", () => {
+        playGame("paper");
+      });
+      document.querySelector(".js-scissors").addEventListener("click", () => {
+        playGame("scissors");
+      });
+      document.querySelector(".js-reset").addEventListener("click", () => {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        updateScore();
+        document.querySelector(".js-moves").innerHTML = "";
+        document.querySelector(".js-results").innerHTML = "";
+        localStorage.removeItem("score");
+      });
+      document.querySelector(".js-autoplay").addEventListener("click", () => {
+        autoPlayGame();
+      });
+
+      //NOTE: playing the game using keyboard
+      document.body.addEventListener("keydown", (event) => {
+        if (event.key === "r" || event.key === "R") {
+          playGame("rock");
+        } else if (event.key === "p" || event.key === "P") {
+          playGame("paper");
+        } else if (event.key === "s" || event.key === "S") {
+          playGame("scissors");
+        }
+      });
+
+      function playGame(myPick) {
+        let computerMove = pickComputerMove();
+        let result = "";
+
+        if (myPick === "rock") {
+          if (computerMove === "rock") {
+            result = "Tie";
+          } else if (computerMove === "paper") {
+            result = "You lose.";
+          } else if (computerMove === "scissors") {
+            result = "You win.";
+          }
+        } else if (myPick === "paper") {
+          if (computerMove === "paper") {
+            result = "Tie";
+          } else if (computerMove === "scissors") {
+            result = "You lose.";
+          } else if (computerMove === "rock") {
+            result = "You win.";
+          }
+        } else if (myPick === "scissors") {
+          if (computerMove === "scissors") {
+            result = "Tie";
+          } else if (computerMove === "rock") {
+            result = "You lose.";
+          } else if (computerMove === "paper") {
+            result = "You win.";
+          }
+        }
+
+        if (result === "You win.") {
+          score.wins++;
+        } else if (result === "You lose.") {
+          score.losses++;
+        } else if (result === "Tie") {
+          score.ties++;
+        }
+
+        if (myPick === "scissors") {
+          myPick = "✌";
+        } else if (myPick === "rock") {
+          myPick = "✊";
+        } else if (myPick === "paper") {
+          myPick = "✋";
+        }
+        if (computerMove === "scissors") {
+          computerMove = "✌";
+        } else if (computerMove === "rock") {
+          computerMove = "✊";
+        } else if (computerMove === "paper") {
+          computerMove = "✋";
+        }
+
+        localStorage.setItem("score", JSON.stringify(score));
+
+        updateScore();
+
+        document.querySelector(
+          ".js-moves"
+        ).innerHTML = `You picked ${myPick}. Computer picked ${computerMove}.`;
+
+        document.querySelector(".js-results").innerHTML = result;
+      }
+
+      function updateScore() {
+        document.querySelector(
+          ".js-scorecard"
+        ).innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      }
+
+      // BETTER COMMENTS EXTENSION SYNTAX BELOW
+      /**
+       **SDFJSDJFKJ
+       *! DFDJFJDKFJ
+       *? LKDFLKLKDF
+       *TODO-- KLDJFLKJKDF
+       */
+
+      // NOTE: auto play and stop play button functionality
+      let autoPlay = false;
+      let intervalID;
+      function autoPlayGame() {
+        if (!autoPlay) {
+          document.querySelector(".autoplay-btn").innerHTML = "Stop Play";
+          autoPlay = true;
+          intervalID = setInterval(() => {
+            let autoPick = pickComputerMove();
+            playGame(autoPick);
+          }, 1500);
+        } else {
+          clearInterval(intervalID);
+          autoPlay = false;
+          document.querySelector(".autoplay-btn").innerHTML = "Auto Play";
+        }
+      }
+
+      // NOTE: to pick a random computer move
+      function pickComputerMove() {
+        const randomNumber = Math.random();
+        let computerMove = "";
+
+        if (randomNumber >= 0 && randomNumber < 1 / 3) {
+          computerMove = "rock";
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+          computerMove = "paper";
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+          computerMove = "scissors";
+        }
+        return computerMove;
+      }
+    </script>
+  </body>
+</html>

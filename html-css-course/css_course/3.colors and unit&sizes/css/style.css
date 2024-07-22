@@ -1,0 +1,55 @@
+html {
+  font-size: 16px;
+}
+/* the font size is not hard coded coz the browser cant vary it from browser settings*/
+main {
+  font-size: 2rem;
+}
+/* rem size is relative to its root that is html*/
+p {
+  font-size: 1em;
+  width: 40ch;
+}
+/* em size is relative to its parent that is main*/
+/* ch determines the number of characters after which the line wraps*/
+body {
+  font-size: 22px;
+  background-color: black;
+  color: rgb(255, 255, 255);
+}
+/* rgb values ranges from 0 to 255 */
+/* p {
+  color: red;
+} */
+p {
+  color: #ffffff;
+}
+/* just like rgb, ff0000 means red 00ff00 means green 0000ff means blue */
+/* write in short form like, f00 for red 0f0 for green and 00f for blue */
+/* uses hexadecimal values to determine colors */
+p {
+  color: rgba(255, 0, 0, 0.5);
+}
+/* a is alpha and it determines the transparency. its value ranges from 0 to 1 */
+p {
+  color: hsl(0, 100%, 50%);
+}
+/* hue saturation lightness */
+header {
+  width: 100%;
+}
+h1 {
+  border: 2px dashed white;
+  width: 50%;
+}
+/* percentage values are always relative to their parent.
+here, the h1(50%) width is relative to header(50%) its parent element. so the width now is 50% of 50% that is 25%.
+if the header(parent) element is not mentioned then the default value is 100% */
+/* body{
+    width: 100vw;
+    min-height: 100vh;
+}
+read up on vw and vh */
+/* https://elementor.com/help/whats-the-difference-between-px-em-rem-vw-and-vh/ */
+/* https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units*/
+/* https://www.geeksforgeeks.org/css-colors/ */

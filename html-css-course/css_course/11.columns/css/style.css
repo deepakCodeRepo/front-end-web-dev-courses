@@ -1,0 +1,41 @@
+body {
+  font-size: 1.5rem;
+}
+section {
+  column-count: 4;
+  column-width: 250px;
+  /*columns: 4 250px;*/
+  column-rule: 3px solid #333;
+  column-gap: 3rem;
+}
+/* column-width is useful for responsive design */
+.columns p {
+  margin-top: 0;
+}
+/* top margin for each paragraph is made 0 to deal with margin collapsing.
+margin collapsing occurs when margin of one element overlaps on the 
+margin of other element. */
+.columns h2 {
+  margin-top: 0;
+  background-color: #333;
+  color: antiquewhite;
+  padding: 1rem;
+  text-align: center;
+  /* min-height: fit-content;*/
+  break-inside: avoid;
+  /*avoids a part of h2 to break into the next column.*/
+  /*break-before: column;*/
+  /* keeps the header at the start of the next column. 
+  but the problem is, it reduces the content size when we try to decrease it 
+  to one column.*/
+}
+.columns .quote {
+  margin-top: 2rem;
+  font-size: 3rem;
+  color: #333;
+  text-align: center;
+  column-span: all;
+}
+.nowrap {
+  white-space: nowrap;
+}

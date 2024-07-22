@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      body {
+        background-color: gray;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0.5rem;
+      }
+      .entry-css,
+      .todo-css {
+        display: grid;
+        grid-template-columns: 200px 150px 100px;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-items: center;
+      }
+      .todo-css {
+        align-items: stretch;
+        margin-bottom: 10px;
+      }
+      .todo-name-css,
+      .todo-date-css {
+        font-size: 14px;
+        padding: 6px;
+      }
+      .btn-add-css {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .btn-delete-css {
+        background-color: maroon;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px;
+      }
+      .error-msg {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Todo List</h2>
+    <div class="todo-css">
+      <input
+        type="text"
+        class="todo-name todo-name-css"
+        placeholder="Todo Name"
+      />
+      <input type="date" class="todo-date todo-date-css" />
+      <button class="btn-add btn-add-css" onclick="todoAdd();">Add</button>
+    </div>
+    <div id="entry" class="entry entry-css"></div>
+
+    <script>
+      const myArray = [];
+      function todoAdd() {
+        todoName = document.querySelector(".todo-name").value;
+        todoDate = document.querySelector(".todo-date").value;
+        myArray.push({ name: todoName, date: todoDate });
+        console.log(myArray);
+        document.querySelector(".todo-name").value = "";
+        document.querySelector(".todo-date").value = "";
+        rendertodoList();
+      }
+
+      // FIXME: error msg is displayed properly in console but it is not rendered on the web page
+      function rendertodoList() {
+        let htmlTodoList = "";
+        let html = "";
+        let errorMsg = "";
+        for (i = 0; i < myArray.length; i++) {
+          if (myArray[i].name === "" && myArray[i].date === "") {
+            errorMsg = "<div>*Enter the Todo Name and Todo Date</div>";
+            myArray.pop();
+          } else if (myArray[i].date === "") {
+            errorMsg = "<div>*Enter the Todo Date</div>";
+            myArray.pop();
+          } else if (myArray[i].name === "") {
+            errorMsg = "<div>*Enter the Todo Name</div>";
+            myArray.pop();
+          } else {
+            errorMsg = "";
+            html = `<div>${myArray[i].name}</div>
+        <div>${myArray[i].date}</div>
+        <button onclick="myArray.splice(${i},1); rendertodoList();" class="btn-delete-css" >
+          Delete
+        </button>
+          `;
+            htmlTodoList += html;
+            console.log(html);
+          }
+        }
+        console.log(errorMsg);
+        document.getElementById("entry").innerHTML = htmlTodoList;
+        // document.querySelector(".entry").innerHTML = errorMsg;
+      }
+    </script>
+  </body>
+</html>

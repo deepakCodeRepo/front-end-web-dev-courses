@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functions</title>
+  </head>
+  <body>
+    <script>
+      /*
+      function function1() {
+        console.log('hello');
+        console.log(2 + 2);
+      }
+
+      function1();
+      function1();
+      */
+
+      /* taxPercent=0.1 is to set the default value of the parameter */
+      function calculateTax(cost, taxPercent = 0.1) {
+        console.log(cost * taxPercent);
+      }
+
+      calculateTax(2000, 0.2);
+      calculateTax(5000);
+      /* when no value is sent as parameter, default value is used */
+      calculateTax(400, undefined);
+      /* when undefined is sent as parameter, default value is used */
+      calculateTax(400, null);
+      /* when null is sent as parameter, null is used */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      /*
+      const product = {
+        name: 'socks',
+        price: 1090
+      };
+      console.log(product);
+      console.log(product.name);
+      console.log(product.price);
+
+      product.name = 'cotton socks';
+      console.log(product);
+
+      product.newProperty = true;
+      console.log(product);
+
+      delete product.newProperty;
+      console.log(product);
+      */
+
+      /*
+      const product2 = {
+        name: 'shirt',
+        'delivery-time': '1 day',
+        rating: {
+          stars: 4.5,
+          count: 87
+        },
+        fun: function function1() {
+          console.log('function inside object');
+        }
+      };
+      console.log(product2);
+      console.log(product2.name);  ** this is called the dot notation **
+      console.log(product2['name']);
+      console.log(product2['delivery-time']);  ** this is called the bracket notation **
+      
+      ** dot notation is preferred but bracket notation is used when in the above case the dot notation will
+      produce a error because of the -  **
+
+      console.log(product2.rating.count);
+      product2.fun();
+
+      console.log(typeof console.log);
+
+      console.log(JSON.stringify(product2));
+
+      const jsonString = JSON.stringify(product2);
+      console.log(JSON.parse(jsonString));
+      */
+
+      console.log("hello".length);
+      console.log("hello".toUpperCase());
+      /* this is called auto-boxing where a special object is wrapped around the string. This can be done with numbers and Boolean
+      but not with null and undefined. */
+
+      const object1 = {
+        message: "hello",
+        price: 799,
+      };
+      /* here the value is stored somewhere in the memory. In object1 the reference to that value is stored. */
+      const object2 = object1;
+      /* here the reference is copied to object2 and not the whole value, which makes javascript efficient. 
+      This is called copy by reference  */
+
+      object1.message = "Good job!";
+      /* even though object1 is const, its value can be changed but not its reference  */
+      console.log(object1);
+      console.log(object2);
+      /* object2 has a refence which is pointing to the same value as the refence of object1  */
+
+      const object3 = {
+        message: "Good job!",
+        price: 799,
+      };
+      console.log(object1 === object3);
+      /* this is comparing the references and not the values inside */
+
+      // const message = object3.message;
+      // const price = object3.price;
+      const { message, price } = object3;
+      /* this is called destructuring. a shorthand way to access properties in objects 
+      and assign them to variables when their names are similar*/
+      console.log(message);
+      console.log(cost);
+
+      const object4 = {
+        // message: message,
+        message,
+        /* the above is called shorthand property. used when property and value are the same */
+
+        // method: function function1() {
+
+        // },
+        // method: function() {
+
+        // },
+        method() {},
+        /* this is called shorthand method */
+      };
+    </script>
+  </body>
+</html>

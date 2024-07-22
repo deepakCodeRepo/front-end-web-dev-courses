@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Subscribe button</title>
+    <style>
+      .sub-btn {
+        background-color: black;
+        color: white;
+        font-size: larger;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        padding: 1rem 1.5rem;
+        cursor: pointer;
+      }
+      .is-subscribed {
+        background-color: rgb(225, 175, 113);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>youtube subscribe button</h2>
+    <button class="js-sub-btn sub-btn" onclick="subButton();">Subscribe</button>
+    <!-- its recommended to use different classes for js and css -->
+    <script>
+      function subButton() {
+        const buttonState = document.querySelector(".js-sub-btn");
+        if (buttonState.innerText === "Subscribe") {
+          buttonState.innerHTML = "Subscribed";
+          buttonState.classList.add("is-subscribed");
+          /* this is to add a class in order to style it after the button is clicked */
+        } else {
+          buttonState.innerHTML = "Subscribe";
+          buttonState.classList.remove("is-subscribed");
+        }
+        /* use innerText if there are any spaces in the text of the html element like "  subscribe" */
+      }
+    </script>
+  </body>
+</html>

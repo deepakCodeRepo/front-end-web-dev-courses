@@ -1,0 +1,99 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function*/
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/animation*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 1.1rem;
+}
+body {
+  min-height: 100vh;
+  background-color: rgb(69, 69, 69);
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+div {
+  margin: 1rem;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  display: grid;
+  place-content: center;
+}
+
+/* || TRANSFORM */
+
+div:first-child {
+  background-color: aqua;
+  /* transform: translateX(-50%); */
+  /* transform: rotateX(180deg); */
+  /* transform: scaleX(1.5); */
+  /* transform: skewX(10deg); */
+}
+div:nth-child(2) {
+  background-color: yellow;
+  /* transform: translatey(-3rem); */
+  /* transform: rotateY(180deg); */
+  /* transform: scaleY(1.5); */
+  /* transform: skewX(-10deg); */
+}
+/* rotate x and y flips the elements, so rotate x and y 90deg 
+will make the elements invisible coz we are looking at their cross-section. */
+div:last-child {
+  background-color: greenyellow;
+  /* transform: translate(50%, -6rem); */
+  /* transform: rotateZ(45deg); */
+  /* transform: scale(0.5, 0.5); */
+  /* transform: skew(-20deg, -20deg); */
+}
+
+/* || TRANSITION */
+
+div:hover {
+  background-color: midnightblue;
+  transition-property: background-color, transform;
+  transition-duration: 2s, 3s;
+  transition-delay: 0.3s, 1s;
+  transition-timing-function: linear; /* ease is the default */
+  /* transition: all 2s linear 0.3s; */
+}
+div:last-child:hover {
+  transform: rotate(180deg);
+}
+
+/* || ANIMATION */
+div:last-child {
+  animation-name: slide;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: 3;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(200px) rotate(180deg);
+  }
+  66% {
+    transform: translateX(-200px) rotate(-180deg);
+  }
+  100% {
+    transform: translateX(0);
+    background-color: purple;
+  }
+}

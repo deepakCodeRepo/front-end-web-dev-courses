@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clip {
+  padding: 6rem;
+  font-size: 18rem;
+  font-weight: 800;
+  text-align: center;
+  font-style: italic;
+  text-transform: lowercase;
+  background-image: url("../img/scenic-2200x1331.png");
+  background-size: 100%;
+  -webkit-background-clip: text;
+  /* -webkit required for browsers other than firefox */
+  background-clip: text;
+  color: hsla(0, 0%, 0%, 0.203);
+}

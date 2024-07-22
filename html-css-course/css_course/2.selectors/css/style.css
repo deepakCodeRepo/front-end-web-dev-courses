@@ -1,0 +1,64 @@
+/* * {
+  font-family: monospace;
+  border: 3px solid black;
+} */
+/* universal selector applies to each element.Like border is applied to
+each element. Its used for a css reset */
+html {
+  font-size: 22px;
+}
+body {
+  font-size: 22px;
+  border: 3px solid black;
+}
+/* some properties of the body are inherited by elements in it. Like boder is not applied
+to all the elements, just to body*/
+span {
+  border: inherit;
+}
+/* border is only applied to body. so to inherit border from body "inherit" is used*/
+main {
+  font-family: monospace;
+}
+h1 {
+  color: red;
+}
+h1,
+h2 {
+  color: aqua;
+}
+/* h1, h2 applies to both h1 and h2 element */
+h1 h2 {
+  color: darkgray;
+}
+/* h1 h2 searches for an h2 element within the h1 element */
+
+#first {
+  color: sienna;
+  font-style: italic;
+}
+/* id is unique to each element , so its applied to that specific element. id selector is not recommended*/
+.green {
+  color: green;
+}
+/* multiple elements can be grouped into class and css can be applied. class selectors is recommended coz of its reusability.*/
+/* class and id are more specific so they have precedence over element selectors*/
+/* css is cascading stylesheet so p selector should be applied as its at the bottom but .green selector is applied coz specificity is given preference */
+p {
+  color: blueviolet;
+}
+/* element selector applies to all the same elements in the page */
+.highlighted {
+  color: yellow;
+}
+p span {
+  text-transform: uppercase;
+  background-color: chocolate;
+}
+/* instead of using p span it is recommended to class selector .highlighted */
+/* p {
+  color: blueviolet!important;
+} */
+/* !important overrides everything and applies the property. DO NOT USE IT. */
+
+/* https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors */

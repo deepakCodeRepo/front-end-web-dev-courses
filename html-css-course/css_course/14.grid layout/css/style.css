@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: 75px auto 75px;
+  grid-template-areas:
+    "hd hd hd hd hd hd hd hd hd"
+    "mn mn mn mn mn mn mn sb sb"
+    "ft ft ft ft ft ft ft ft ft";
+  gap: 1rem;
+}
+.el {
+  background-color: rebeccapurple;
+  color: white;
+  display: grid;
+  place-content: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.header {
+  grid-area: hd;
+}
+.sidebar {
+  grid-area: sb;
+  background-color: lightblue;
+}
+.footer {
+  grid-area: ft;
+}
+.container {
+  grid-area: mn;
+  min-height: 300px;
+  display: grid;
+  /* grid-auto-flow: column; */
+  /* grid-template-rows: 100px 100px; */
+  /* grid-template-columns: 100px 100px 100px; */
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 2fr;
+  /* grid-template-columns: 200px 1fr 2fr; */
+  /* fraction (fr) is a grid unit used to divide the available viewport size according
+  to the given fractions.  */
+  /* grid-template-columns: repeat(2, 1fr 2fr);
+  repeat 1fr 2fr pattern 2 times */
+  /* grid-auto-rows: minmax(150px, auto); */
+  row-gap: 2rem;
+  column-gap: 1rem;
+  /* gap: 2rem 1rem; */
+}
+.box {
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.box:first-child {
+  background-color: blue;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  /* grid-column: 1/3; */
+  grid-row-start: 1;
+  grid-row-end: 3;
+  /* grid-row: 1/3; */
+
+  display: grid;
+  align-items: start;
+  justify-content: center;
+  /* place-content: start center; */
+}
+
+.box:nth-child(2) {
+  background-color: purple;
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 1;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout */

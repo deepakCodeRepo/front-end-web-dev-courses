@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.5rem;
+  min-height: 200vh;
+  min-width: 200vw;
+}
+.outer-container {
+  border: 3px dashed black;
+  height: 85vh;
+  width: 75vw;
+  margin: 40px auto;
+  position: relative;
+}
+.inner-container {
+  border: 2px dashed blue;
+  height: 50vh;
+  width: 40vw;
+  margin: 200px auto;
+  /* position: relative; */
+}
+.box {
+  width: 150px;
+  height: 150px;
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+}
+.absolute {
+  background-color: blue;
+  top: 0;
+  left: 0;
+  /* left: -10000px;
+  will make the absolute box disappear from the page but still in the document. 
+  good for accessibility compared to display:none; and opacity:0 */
+  position: absolute;
+  /*position: static;
+  this is the default property*/
+  z-index: 1;
+  /* z-index is used to overlap the boxes. its default is 0. a value of 1,2,3,... 
+  will overlap the boxes */
+}
+/* .absolute will be relative to the parent container which has any position except static */
+/* absolute and fixed are taken out of the document flow and other elements behave as if they don't exist. But 
+relative and sticky are present in the document flow but they can be moved using top,left,right and bottom*/
+/* if more than one container has position:relative; then specificity is given in order.*/
+.relative {
+  background-color: red;
+  top: 0;
+  left: 80px;
+  position: relative;
+  z-index: 2;
+}
+/* .relative is relative to the parent container*/
+.fixed {
+  background-color: green;
+  top: 0;
+  left: 400px;
+  position: fixed;
+  z-index: 3;
+}
+/* .fixed stays in position even when page scrolls*/
+.sticky {
+  background-color: black;
+  top: 20px;
+  left: 20px;
+  position: sticky;
+  z-index: 4;
+}
+/* here top and left provides a gap between the sticky black box and viewport while scrolling */
+/* .sticky stays within the confines of the container even when page scrolls*/
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/position */

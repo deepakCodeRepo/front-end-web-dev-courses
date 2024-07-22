@@ -1,0 +1,33 @@
+body {
+  font-size: 1.5em;
+}
+section {
+  background-color: bisque;
+  border: 1px solid #333;
+  padding: 1rem;
+  display: flow-root;
+}
+/* if we dont use display: flow-root; the size of the container will be according
+to the length of the paragraph. we can observe this using background-color. */
+.block {
+  height: 30vw;
+  width: 30vw;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.left {
+  float: left;
+  margin-right: 1rem;
+}
+.right {
+  float: right;
+  margin-left: 1rem;
+}
+/* p {
+  margin-left: 10%;
+} */
+/* if we apply margin to p element, the paragraphs wrapped with float wont get
+any margins.
+so we apply margin to the float blocks */

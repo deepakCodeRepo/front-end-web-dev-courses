@@ -1,0 +1,45 @@
+body {
+  padding: 5%;
+  font-size: 2rem;
+  font-family: "Times New Roman", Times, serif;
+}
+ol {
+  list-style-type: lower-alpha;
+  /* list-style-type: none;
+  padding: 0; */
+}
+ul {
+  list-style-type: square;
+  text-align: center;
+  list-style-position: inside;
+  color: blue;
+  line-height: 2;
+  /*   list-style-image: url("../images/check-mark.png");*/
+  /* list-style: square url("../check-mark.png") inside; */
+  /*   short hand form of list style where all 3 properties are mentioned*/
+}
+
+/* ul li {
+  list-style: none;
+  padding: 10px 30px;
+  background-image: url("../check-mark.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 20px;
+} 
+to apply check mark image to unordered list by resizing it*/
+
+/* https://www.geeksforgeeks.org/how-to-resize-list-style-image-in-css/*/
+
+ul li:nth-child(even) {
+  color: red;
+}
+
+::marker {
+  color: black;
+  font-family: fantasy;
+  font-size: 2em;
+  content: "only $5>>  ";
+}
+/* here ::marker is a pseudo element, which only applies to the list markers and 
+not the text*/

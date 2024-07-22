@@ -1,0 +1,28 @@
+body {
+  padding: 5%;
+  font-size: 2rem;
+  font-family: "Times New Roman", Times, serif;
+}
+a {
+  text-decoration: none;
+  cursor: not-allowed;
+  color: hsl(240, 100%, 50%);
+}
+a:visited {
+  color: purple;
+}
+a:hover,
+a:focus {
+  color: hsl(191, 76%, 62%);
+  opacity: 0.6;
+  background-color: rgb(238, 232, 54);
+
+  /* filter: opacity(0.6);
+  filter: brightness(120%);
+  filter: hue-rotate(180deg); */
+}
+a:active {
+  color: red;
+}
+/* the above 3 are pseudo classes so they have the same specificity.
+the order in which they r arranged is important or else they wont work. */

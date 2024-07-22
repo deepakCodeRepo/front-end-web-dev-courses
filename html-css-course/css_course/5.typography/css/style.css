@@ -1,0 +1,28 @@
+body {
+  padding: 10%;
+  font-size: 1.5rem;
+}
+/* input,
+button {
+  font: inherit;
+} */
+p {
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-align: justify;
+  text-indent: 2em;
+  line-height: 1.5em;
+  letter-spacing: 0.3em;
+  word-spacing: 1em;
+  font-size: 1em;
+  font-family: "Courier New", Courier, monospace;
+  /* 3 font familys are selected, so depending on which is available it is chosen. 
+  names that have space between them should be in double or single quotes.  */
+  font-style: italic;
+  font-weight: 600;
+}
+/* we can use fonts from fonts.google.com by using link tag in html or @import in css. importing fonts is not recommended coz it takes time to load. style with css instead.
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+*/
+
+/* https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals#fonts*/

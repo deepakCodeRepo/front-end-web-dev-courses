@@ -1,0 +1,142 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions*/
+
+/* || RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* || VARIABLES */
+:root {
+  --BGCOLOR: #475569;
+  --ALT-BGCOLOR: #1e293b;
+  --RADIAL-COLOR: whitesmoke;
+  --LIGHT-COLOR: whitesmoke;
+  --DARK-COLOR: black;
+  --BORDERS: 2px solid var(--DARK-COLOR);
+
+  --FF: sans-serif;
+  --FS: clamp(2.25rem, 4vh, 2.75rem);
+  /*--FS: min(2.25rem, 3vh);
+   This technique uses an absolute unit to specify a fixed maximum value for the property, 
+  and a relative unit to allow the value to shrink to suit smaller viewports.
+  --FS: max(1.75rem, 3vh); */
+  --FS-SM: clamp(1.75rem, 2vh, 2.25rem);
+  --FS-XL: 3rem;
+
+  --PADDING: 0.5em;
+  --SHADOWS: 0 10px 5px -5px var(--DARK-COLOR);
+
+  --SQUARE-BGCOLOR: papayawhip;
+  --SQUARE-SIZE: max(150px, 20vw);
+}
+/* everything inherits from :root pseudo class */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --BGCOLOR: #000000;
+    --ALT-BGCOLOR: #333;
+    --RADIAL-COLOR: rgb(217, 216, 216);
+    --SQUARE-BGCOLOR: rgb(225, 173, 229);
+  }
+}
+/* here media queries is used to display the elements in light mode */
+
+/* || GENERAL STYLES */
+body {
+  font: var(--FS) var(--FF);
+  min-height: 100vh;
+  background-color: var(--BGCOLOR);
+  background-image: radial-gradient(var(--RADIAL-COLOR), var(--BGCOLOR));
+  display: flex;
+  flex-direction: column;
+}
+header,
+nav,
+footer {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100%;
+  text-align: center;
+}
+header,
+footer {
+  background-color: var(--ALT-BGCOLOR);
+  color: var(--LIGHT-COLOR);
+}
+header {
+  top: 0;
+}
+nav {
+  background-color: var(--LIGHT-COLOR);
+  color: var(--DARK-COLOR);
+  border-bottom: var(--BORDERS);
+  box-shadow: var(--SHADOWS);
+}
+main {
+  flex-grow: 1;
+
+  /* 
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: min(4vw, 15px); */
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+main section {
+  flex-grow: 1;
+  padding: var(--PADDING);
+}
+main aside {
+  background-color: hsla(0, 0%, 20%, 0.8);
+  color: var(--LIGHT-COLOR);
+  font-size: var(--FS-SM);
+  font-style: italic;
+  padding: var(--PADDING);
+}
+.content {
+  margin-top: 20px;
+}
+.tooltip {
+  border-bottom: 2px dashed orange;
+  position: relative;
+}
+.tooltip:hover::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -20px;
+  white-space: nowrap;
+  background-color: var(--DARK-COLOR);
+  padding: var(--PADDING);
+  border-radius: 15px;
+}
+footer {
+  bottom: 0;
+}
+a:any-link {
+  color: firebrick;
+}
+a:hover,
+a:focus {
+  /* filter: opacity(0.6); */
+  filter: brightness(120%);
+  /* filter: hue-rotate(180deg); */
+}
+
+@media screen and (min-width: 576px) {
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  main section {
+    width: calc(70%-5px);
+  }
+  main aside {
+    width: calc(30%-5px);
+  }
+}

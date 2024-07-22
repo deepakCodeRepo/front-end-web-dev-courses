@@ -1,0 +1,103 @@
+/* || RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* || VARIABLES */
+:root {
+  --BGCOLOR: #475569;
+  --ALT-BGCOLOR: #1e293b;
+  --RADIAL-COLOR: whitesmoke;
+  --LIGHT-COLOR: whitesmoke;
+  --DARK-COLOR: black;
+  --BORDERS: 2px solid var(--DARK-COLOR);
+
+  --FF: sans-serif;
+  --FS: 1.5rem;
+  --FS-XL: 3rem;
+
+  --PADDING: 0.5rem;
+  --SHADOWS: 0 10px 5px -5px var(--DARK-COLOR);
+
+  --SQUARE-BGCOLOR: papayawhip;
+  --SQUARE-SIZE: max(150px, 20vw);
+}
+/* everything inherits from :root pseudo class */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --BGCOLOR: #000000;
+    --ALT-BGCOLOR: #333;
+    --RADIAL-COLOR: rgb(217, 216, 216);
+    --SQUARE-BGCOLOR: rgb(225, 173, 229);
+  }
+}
+/* here media queries is used to display the elements in dark mode */
+
+/* || GENERAL STYLES */
+body {
+  font: var(--FS) var(--FF);
+  min-height: 100vh;
+  background-color: var(--BGCOLOR);
+  background-image: radial-gradient(var(--RADIAL-COLOR), var(--BGCOLOR));
+  display: flex;
+  flex-direction: column;
+}
+header,
+nav,
+footer {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100%;
+  text-align: center;
+}
+header,
+footer {
+  background-color: var(--ALT-BGCOLOR);
+  color: var(--LIGHT-COLOR);
+}
+header {
+  top: 0;
+}
+nav {
+  background-color: var(--LIGHT-COLOR);
+  color: var(--DARK-COLOR);
+  padding: var(--PADDING);
+  border-bottom: 2px solid var(--DARK-COLOR);
+  box-shadow: var(--SHADOWS);
+}
+main {
+  flex-grow: 1;
+
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+  gap: min(4vw, 15px);
+}
+footer {
+  bottom: 0;
+}
+
+/* || FEATURES  */
+.square {
+  background-color: var(--SQUARE-BGCOLOR);
+  width: var(--SQUARE-SIZE);
+  height: var(--SQUARE-SIZE);
+  border: var(--BORDERS);
+  border-radius: 15px;
+  display: grid;
+  place-content: center;
+  font-size: var(--FS-XL);
+  /* flex-basis: 33.33333%; */
+  /* flex-basis is set to 33.33333% to have 3 columns */
+}
+
+.square--highlight {
+  --SQUARE-BGCOLOR: CORNFLOWERBLUE;
+}
+/* we can change the variables value like this whose scope will
+be within the class */

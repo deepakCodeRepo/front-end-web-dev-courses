@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      body {
+        background-color: gray;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0.5rem;
+      }
+      .entry-css,
+      .todo-css {
+        display: grid;
+        grid-template-columns: 200px 150px 100px;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-items: center;
+      }
+      .todo-css {
+        align-items: stretch;
+        margin-bottom: 10px;
+      }
+      .todo-name-css,
+      .todo-date-css {
+        font-size: 14px;
+        padding: 6px;
+      }
+      .btn-add-css {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .btn-delete-css {
+        background-color: maroon;
+        color: white;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        padding: 10px;
+      }
+      .error-msg {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Todo List</h2>
+    <div class="todo-css">
+      <input
+        type="text"
+        class="todo-name todo-name-css"
+        placeholder="Todo Name"
+      />
+      <input type="date" class="todo-date todo-date-css" />
+      <button class="btn-add btn-add-css">Add</button>
+    </div>
+    <div class="entry entry-css"></div>
+
+    <script>
+      const myArray = [];
+
+      const addButton = document.querySelector(".btn-add");
+      addButton.addEventListener("click", () => {
+        todoName = document.querySelector(".todo-name").value;
+        todoDate = document.querySelector(".todo-date").value;
+        myArray.push({ name: todoName, date: todoDate });
+        console.log(myArray);
+        document.querySelector(".todo-name").value = "";
+        document.querySelector(".todo-date").value = "";
+        rendertodoList();
+      });
+
+      function rendertodoList() {
+        let htmlTodoList = "";
+        myArray.forEach((todoObject, index) => {
+          let html = `<div>${todoObject.name}</div>
+          <div>${todoObject.date}</div>
+          <button  class="btn-delete btn-delete-css" >
+            Delete
+          </button>
+            `;
+
+          htmlTodoList += html;
+          console.log(html);
+        });
+        document.querySelector(".entry").innerHTML = htmlTodoList;
+
+        //NOTE: eventListener is added after the element is rendered on the webpage, in this case the element is the delete button. querySelectorAll to apply the functionality to all the delete buttons. querySelectorAll gives a list of elements and we loop through them using forEach.
+        document
+          .querySelectorAll(".btn-delete")
+          .forEach((deleteButton, index) => {
+            deleteButton.addEventListener("click", () => {
+              myArray.splice(index, 1);
+              rendertodoList();
+            });
+          });
+      }
+    </script>
+  </body>
+</html>
